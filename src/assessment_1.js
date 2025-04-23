@@ -1,14 +1,26 @@
-const NEW_LINE_OR_COMMA_REGEX = /\s*,\s*|\s+/;
 /**
  * 
  * @param {*} numbers string of numbers separated by delimiter
  * @returns sum of numbers
  */
 const add = (numbers) => {
-  const arrayOfNumbers = numbers.split(NEW_LINE_OR_COMMA_REGEX);
+  let delimiter = /\s*,\s*|\s+/;
+  let stringToBeCompared = String(numbers);
+
+  // finding the delimiter and modifying the comparison array
+  if(stringToBeCompared.startsWith('//')) {
+    delimiter = stringToBeCompared.charAt(2)
+    stringToBeCompared = stringToBeCompared.slice(2)
+  }
+
+  // get array of numbers from the delimiter
+  const numbersArray = stringToBeCompared.split(delimiter);
+
+  // sum the array of numbers
   let sum = 0;
-  for (let i = 0; i < arrayOfNumbers.length; i++) {
-    const num = parseInt(arrayOfNumbers[i]);
+  for (let i = 0; i < numbersArray.length; i++) {
+    const num = parseInt(numbersArray[i]);
+    // ignore if number is not an integer
     if (isNaN(num)) {
       continue;
     }
