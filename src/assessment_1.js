@@ -5,7 +5,7 @@
  * @returns sum of numbers
  */
 const add = (numbers) => {
-  const arrayOfNumbers = numbers.split(',');
+  const arrayOfNumbers = numbers.split(/\s*,\s*|\s+/);
   let sum = 0;
   for (let i = 0; i < arrayOfNumbers.length; i++) {
     const num = parseInt(arrayOfNumbers[i]);
