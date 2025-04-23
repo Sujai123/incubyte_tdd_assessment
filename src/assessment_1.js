@@ -9,5 +9,5 @@ const add = (numbers) => {
 }
 
 module.exports = {
-  add
+  add: add
 }

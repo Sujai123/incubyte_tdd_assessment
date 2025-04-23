@@ -1,3 +1,3 @@
-const { add } = import('./src/assesment_1.js');
+const { add } = require('./src/assessment_1.js');
 
-console.log(add([1, 2, 3, 4, 5]));
+console.log(add('1,2,3,4,5'));
