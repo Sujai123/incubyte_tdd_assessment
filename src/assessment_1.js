@@ -24,6 +24,11 @@ const add = (numbers) => {
     if (isNaN(num)) {
       continue;
     }
+
+    // check for negative numbers
+    if (num < 0) {
+      throw new Error(`negative numbers not allowed ${num}`);
+    }
     sum += num;
   }
   return sum;
