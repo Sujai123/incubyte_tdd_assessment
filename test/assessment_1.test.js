@@ -45,6 +45,7 @@ describe('#add', () => {
   describe('when negative number is provided', () => {
     it('throws Error', () => {
       expect(() => add('1,-2')).toThrow('negative numbers not allowed -2');
+      expect(() => add('1,-2,-3')).toThrow('negative numbers not allowed -2,-3');
     })
   })
 
