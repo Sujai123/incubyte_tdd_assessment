@@ -4,12 +4,29 @@
  * @returns sum of numbers
  */
 const add = (numbers) => {
+  // initial delimiter and comparison string(later may or may not be changed)
   let delimiter = /\s*,\s*|\s+/;
   let stringToBeCompared = String(numbers);
 
+  const negativeNumbers = [];
+  const THRESHOLD = 1000;
+
   // finding the delimiter and modifying the comparison array
-  if(stringToBeCompared.startsWith('//')) {
+  const delimiterMatches = [...stringToBeCompared.matchAll(/\[(.+?)\]/g)];
+  const delimiters = delimiterMatches.map(match => match[1]);
+
+  // to compare delimiters in format //[<delimiter>]\n
+  if(delimiters.length > 0) {
+    // ignore delimiter part and assign the rest of the string
+    const firstNewlineIndex = stringToBeCompared.indexOf('\n');
+    stringToBeCompared = firstNewlineIndex !== -1 ? stringToBeCompared.slice(firstNewlineIndex + 1) : '';
+
+    // build the regex, before building the regex escape the characters which are in part of regex syntax.
+    const escapedDelimiters = delimiters.map(d => d.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    delimiter = new RegExp(escapedDelimiters.join('|'), 'g');
+  } else if (stringToBeCompared.startsWith('//')) { // to compare delimiters in format //<delimiter>\n
     delimiter = stringToBeCompared.charAt(2)
+    // ignore delimiter part and assign the rest of the string
     stringToBeCompared = stringToBeCompared.slice(2)
   }
 
@@ -27,9 +44,19 @@ const add = (numbers) => {
 
     // check for negative numbers
     if (num < 0) {
-      throw new Error(`negative numbers not allowed ${num}`);
+      negativeNumbers.push(num);
+      continue;
     }
+    
+    // check for number greater than threshold
+    if (!(num < THRESHOLD)) continue;
+
     sum += num;
+  }
+
+  // throw error if negative number
+  if(negativeNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed ${negativeNumbers.join(',')}`);
   }
   return sum;
 }
