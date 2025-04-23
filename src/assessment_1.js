@@ -7,6 +7,7 @@ const add = (numbers) => {
   let delimiter = /\s*,\s*|\s+/;
   let stringToBeCompared = String(numbers);
   const negativeNumbers = [];
+  const THRESHOLD = 1000;
 
   // finding the delimiter and modifying the comparison array
   if(stringToBeCompared.startsWith('//')) {
@@ -31,6 +32,10 @@ const add = (numbers) => {
       negativeNumbers.push(num);
       continue;
     }
+    
+    // check for number greater than threshold
+    if (!(num < THRESHOLD)) continue;
+
     sum += num;
   }
 
