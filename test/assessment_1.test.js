@@ -49,4 +49,10 @@ describe('#add', () => {
     })
   })
 
+  describe('when number is greater than 1000', () => {
+    it('sums the number only less than 1000', () => {
+      expect(add('1,2,1000')).toBe(3);
+    })
+  })
+
 })
