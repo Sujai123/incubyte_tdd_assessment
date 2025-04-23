@@ -6,6 +6,7 @@
 const add = (numbers) => {
   let delimiter = /\s*,\s*|\s+/;
   let stringToBeCompared = String(numbers);
+  const negativeNumbers = [];
 
   // finding the delimiter and modifying the comparison array
   if(stringToBeCompared.startsWith('//')) {
@@ -27,9 +28,14 @@ const add = (numbers) => {
 
     // check for negative numbers
     if (num < 0) {
-      throw new Error(`negative numbers not allowed ${num}`);
+      negativeNumbers.push(num);
+      continue;
     }
     sum += num;
+  }
+
+  if(negativeNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed ${negativeNumbers.join(',')}`);
   }
   return sum;
 }
