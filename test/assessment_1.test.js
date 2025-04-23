@@ -65,6 +65,7 @@ describe('#add', () => {
     it('sums the number', () => {
       expect(add('//[*][+]\n1*2+3')).toBe(6)
       expect(add('//[***][+]\n1***2+3')).toBe(6)
+      expect(add('//[***][+]\n1***2+3\n4')).toBe(6)
     })
   })
 
