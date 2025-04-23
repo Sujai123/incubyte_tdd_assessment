@@ -35,4 +35,11 @@ describe('#add', () => {
     });
   })
 
+  describe('when the input is a list of numbers separated by other delimiter', () => {
+    it('should return the sum of the numbers', () => {
+      expect(add('//;\n1;2')).toBe(3);
+      expect(add('//#\n1#2#3,4')).toBe(10);
+    });
+  })
+
 })
