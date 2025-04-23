@@ -4,8 +4,10 @@
  * @returns sum of numbers
  */
 const add = (numbers) => {
+  // initial delimiter and comparison string(later may or may not be changed)
   let delimiter = /\s*,\s*|\s+/;
   let stringToBeCompared = String(numbers);
+
   const negativeNumbers = [];
   const THRESHOLD = 1000;
 
@@ -39,6 +41,7 @@ const add = (numbers) => {
     sum += num;
   }
 
+  // throw error if negative number
   if(negativeNumbers.length > 0) {
     throw new Error(`negative numbers not allowed ${negativeNumbers.join(',')}`);
   }
