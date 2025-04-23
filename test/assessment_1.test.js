@@ -61,4 +61,10 @@ describe('#add', () => {
     })
   })
 
+  describe('when multiple delimiter has is present', () => {
+    it('sums the number', () => {
+      expect(add('//[*][+]\n1*2+3')).toBe(6)
+    })
+  })
+
 })
