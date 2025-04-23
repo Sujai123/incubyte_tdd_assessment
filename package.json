@@ -1,0 +1,25 @@
+{
+  "name": "incubyte_tdd_assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sujai123/incubyte_tdd_assessment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sujai123/incubyte_tdd_assessment/issues"
+  },
+  "homepage": "https://github.com/Sujai123/incubyte_tdd_assessment#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.10"
+  }
+}
