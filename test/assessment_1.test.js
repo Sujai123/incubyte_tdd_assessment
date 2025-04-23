@@ -55,4 +55,10 @@ describe('#add', () => {
     })
   })
 
+  describe('when delimiter has multiple character', () => {
+    it('sums the number', () => {
+      expect(add('//[***]\n1***2***3')).toBe(6)
+    })
+  })
+
 })
